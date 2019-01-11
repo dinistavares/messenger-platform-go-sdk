@@ -23,7 +23,7 @@ func (m *Messenger) sendCustomMessage(i interface{}) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	resp, err := m.doRequest("POST", GraphAPI+"/v3.0/me/messages", bytes.NewReader(byt))
+	resp, err := m.doRequest("POST", GraphAPI+"/v3.2/me/messages", bytes.NewReader(byt))
 	if err != nil {
 		return nil, err
 	}

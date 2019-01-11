@@ -21,7 +21,13 @@ type Profile struct {
 // GetProfile fetches the recipient's profile from facebook platform
 // Non empty UserID has to be specified in order to receive the information
 func (m *Messenger) GetProfile(userID string, scope string) (*Profile, error) {
-	resp, err := m.doRequest("GET", fmt.Sprintf(GraphAPI+"/v3.0/%s?fields="+scope, userID), nil)
+	url := GraphAPI+"/v3.2/" + userID
+
+	if (scope != "") {
+		url += "?fields="+scope
+	}
+
+	resp, err := m.doRequest("GET", url, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -45,7 +51,7 @@ type accountLinking struct {
 // one must supply a valid and not expired authentication token provided by facebook
 // https://developers.facebook.com/docs/messenger-platform/account-linking/authentication
 func (m *Messenger) GetPSID(token string) (*string, error) {
-	resp, err := m.doRequest("GET", fmt.Sprintf(GraphAPI+"/v3.0/me?fields=recipient&account_linking_token=%s", token), nil)
+	resp, err := m.doRequest("GET", fmt.Sprintf(GraphAPI+"/v3.2/me?fields=recipient&account_linking_token=%s", token), nil)
 	if err != nil {
 		return nil, err
 	}
