@@ -75,7 +75,8 @@ type Delivery struct {
 // Postback contains content specific to a postback.
 // https://developers.facebook.com/docs/messenger-platform/webhook-reference/message
 type Postback struct {
-	Payload	 string `json:"payload"`
+	Title	 string `json:"title,omitempty"`
+	Payload	 string `json:"payload,omitempty"`
 	Referral *Referral `json:"referral,omitempty"`
 }
 
