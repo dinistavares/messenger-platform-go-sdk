@@ -94,6 +94,8 @@ const (
 	MessageTagFeatureFuntionalityUpdate MessageTag = "FEATURE_FUNCTIONALITY_UPDATE"
 	// MessageTagFeatureTickerUpdate send the message recipient updates or reminders for an event for which a person already has a ticket.
 	MessageTagFeatureTickerUpdate MessageTag = "TICKET_UPDATE"
+	// MessageTagHumanAgent allows human agents to respond to user inquiries. Messages can be sent within 7 days after a user message.
+	MessageTagHumanAgent MessageTag = "HUMAN_AGENT"
 )
 
 type MessageQuery struct {
@@ -101,7 +103,7 @@ type MessageQuery struct {
 	Message          SendMessage      `json:"message"`
 	NotificationType NotificationType `json:"notification_type,omitempty"`
 	MessagingType 	 MessagingType 	  `json:"messaging_type,omitempty"`
-	MessageTag 	 	 MessageTag 	  `json:"tag,omitempty"`
+	MessageTag 	 MessageTag 	  `json:"tag,omitempty"`
 }
 
 func (mq *MessageQuery) RecipientID(recipientID string) error {
