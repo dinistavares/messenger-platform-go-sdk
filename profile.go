@@ -10,6 +10,7 @@ import (
 
 // Profile struct holds data associated with Facebook profile
 type Profile struct {
+	Name           string 	`json:"name,omitempty"` // Instagram Fallback
 	FirstName      string 	`json:"first_name"`
 	LastName       string 	`json:"last_name"`
 	ProfilePicture string 	`json:"profile_pic,omitempty"`
