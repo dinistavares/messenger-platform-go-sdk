@@ -66,8 +66,8 @@ type QuickReplyPayload struct {
 }
 
 type ReplyTo struct {
-	Story struct {
-		Url  	string 			`json:"url,omitempty"`
+	Story *struct {
+		URL  	string 			`json:"url,omitempty"`
 		ID 		string 			`json:"id,omitempty"`
 	} `json:"story,omitempty"`
 }
