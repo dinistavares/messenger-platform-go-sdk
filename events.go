@@ -54,6 +54,7 @@ type ReceivedMessage struct {
 	Attachments []*Attachment      `json:"attachments,omitempty"`
 	Seq         int                `json:"seq"`
 	QuickReply  *QuickReplyPayload `json:"quick_reply,omitempty"`
+	ReplyTo  	*ReplyTo 		   `json:"reply_to,omitempty"`
 	IsEcho      bool               `json:"is_echo,omitempty"`
 	Metadata    *string            `json:"metadata,omitempty"`
 }
@@ -62,6 +63,13 @@ type ReceivedMessage struct {
 // https://developers.facebook.com/docs/messenger-platform/webhook-reference/message
 type QuickReplyPayload struct {
 	Payload string
+}
+
+type ReplyTo struct {
+	Story struct {
+		Url  	string 			`json:"url,omitempty"`
+		ID 		string 			`json:"id,omitempty"`
+	} `json:"story,omitempty"`
 }
 
 // Delivery contains information specific to a message delivered callback.
