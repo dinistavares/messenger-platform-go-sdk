@@ -206,10 +206,6 @@ func (mq *MessageQuery) QuickReply(qr QuickReply) error {
 		return errors.New("Location ContentType supports neither title nor payload")
 	}
 
-	//title has a 20 character limit
-	if len(qr.Title) > 20 {
-		return errors.New("Title is too long, it has a 20 character limit.")
-	}
 	//payload has a 1000 character limit
 	if len(qr.Payload) > 1000 {
 		return errors.New("Payload is too long, it has a 1000 character limit.")
