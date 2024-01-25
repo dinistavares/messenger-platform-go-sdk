@@ -27,7 +27,7 @@ func setClient(code int, body []byte) *httptest.Server {
 	return server
 }
 
-//seed the rand
+// seed the rand
 func init() {
 	rand.Seed(time.Now().UnixNano())
 }

@@ -34,14 +34,14 @@ type MessageEvent struct {
 	Event
 	Messaging []struct {
 		MessageOpts
-		Message  		  *MessageEcho 			`json:"message,omitempty"`
-		Delivery 		  *Delivery  			`json:"delivery,omitempty"`
-		Postback 		  *Postback    			`json:"postback,omitempty"`
-		Optin    	      *Optin       			`json:"optin,omitempty"`
-		Read     		  *Read        		    `json:"read,omitempty"`
-		Referral 	      *Referral    			`json:"referral,omitempty"`
-		PassThreadControl *PassThreadControl 	`json:"pass_thread_control,omitempty"`
-		TakeThreadControl *TakeThreadControl 	`json:"take_thread_control,omitempty"`
+		Message           *MessageEcho       `json:"message,omitempty"`
+		Delivery          *Delivery          `json:"delivery,omitempty"`
+		Postback          *Postback          `json:"postback,omitempty"`
+		Optin             *Optin             `json:"optin,omitempty"`
+		Read              *Read              `json:"read,omitempty"`
+		Referral          *Referral          `json:"referral,omitempty"`
+		PassThreadControl *PassThreadControl `json:"pass_thread_control,omitempty"`
+		TakeThreadControl *TakeThreadControl `json:"take_thread_control,omitempty"`
 	} `json:"messaging"`
 }
 
@@ -54,7 +54,7 @@ type ReceivedMessage struct {
 	Attachments []*Attachment      `json:"attachments,omitempty"`
 	Seq         int                `json:"seq"`
 	QuickReply  *QuickReplyPayload `json:"quick_reply,omitempty"`
-	ReplyTo  	*ReplyTo 		   `json:"reply_to,omitempty"`
+	ReplyTo     *ReplyTo           `json:"reply_to,omitempty"`
 	IsEcho      bool               `json:"is_echo,omitempty"`
 	Metadata    *string            `json:"metadata,omitempty"`
 }
@@ -67,8 +67,8 @@ type QuickReplyPayload struct {
 
 type ReplyTo struct {
 	Story *struct {
-		URL  	string 			`json:"url,omitempty"`
-		ID 		string 			`json:"id,omitempty"`
+		URL string `json:"url,omitempty"`
+		ID  string `json:"id,omitempty"`
 	} `json:"story,omitempty"`
 }
 
@@ -83,31 +83,31 @@ type Delivery struct {
 // Postback contains content specific to a postback.
 // https://developers.facebook.com/docs/messenger-platform/webhook-reference/message
 type Postback struct {
-	Title	 string `json:"title,omitempty"`
-	Payload	 string `json:"payload,omitempty"`
+	Title    string    `json:"title,omitempty"`
+	Payload  string    `json:"payload,omitempty"`
 	Referral *Referral `json:"referral,omitempty"`
 }
 
 // Referral contains content specific to a referal.
 // https://developers.facebook.com/docs/messenger-platform/webhook-reference/referal
 type Referral struct {
-	Ref	string`json:"ref,omitempty"`
-	Source  string`json:"source,omitempty"`
-	Type    string`json:"type,omitempty"`
+	Ref    string `json:"ref,omitempty"`
+	Source string `json:"source,omitempty"`
+	Type   string `json:"type,omitempty"`
 }
 
 // The Pass Thread Control API of the handover protocol is used to pass control of a conversation from one app to another.
 // https://developers.facebook.com/docs/messenger-platform/handover-protocol/take-thread-control
 type PassThreadControl struct {
-	NewOwnerAppID	int64 `json:"new_owner_app_id,omitempty"`
-	Metadata  		string`json:"metadata,omitempty"`
+	NewOwnerAppID int64  `json:"new_owner_app_id,omitempty"`
+	Metadata      string `json:"metadata,omitempty"`
 }
 
-// Take Thread Control API allows the app with the Primary Receiver role to take control of the conversation 
+// Take Thread Control API allows the app with the Primary Receiver role to take control of the conversation
 // https://developers.facebook.com/docs/messenger-platform/handover-protocol/pass-thread-control
 type TakeThreadControl struct {
-	PreviousOwnerAppID	int64 `json:"previous_owner_app_id,omitempty"`
-	Metadata  			string`json:"metadata,omitempty"`
+	PreviousOwnerAppID int64  `json:"previous_owner_app_id,omitempty"`
+	Metadata           string `json:"metadata,omitempty"`
 }
 
 // Optin contains information specific to Opt-In callbacks.

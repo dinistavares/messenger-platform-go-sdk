@@ -10,23 +10,23 @@ import (
 
 // Profile struct holds data associated with Facebook profile
 type Profile struct {
-	Name           string 	`json:"name,omitempty"` // Instagram Fallback
-	UserName       string 	`json:"username,omitempty"` // Instagram username
-	FirstName      string 	`json:"first_name"`
-	LastName       string 	`json:"last_name"`
-	ProfilePicture string 	`json:"profile_pic,omitempty"`
-	Locale         string 	`json:"locale,omitempty"`
-	Timezone       float64  `json:"timezone,omitempty"`
-	Gender         string 	`json:"gender,omitempty"`
+	Name           string  `json:"name,omitempty"`     // Instagram Fallback
+	UserName       string  `json:"username,omitempty"` // Instagram username
+	FirstName      string  `json:"first_name"`
+	LastName       string  `json:"last_name"`
+	ProfilePicture string  `json:"profile_pic,omitempty"`
+	Locale         string  `json:"locale,omitempty"`
+	Timezone       float64 `json:"timezone,omitempty"`
+	Gender         string  `json:"gender,omitempty"`
 }
 
 // GetProfile fetches the recipient's profile from facebook platform
 // Non empty UserID has to be specified in order to receive the information
 func (m *Messenger) GetProfile(userID string, scope string) (*Profile, error) {
-	url := GraphAPI+"/v14.0/" + userID
+	url := GraphAPI + "/v14.0/" + userID
 
-	if (scope != "") {
-		url += "?fields="+scope
+	if scope != "" {
+		url += "?fields=" + scope
 	}
 
 	resp, err := m.doRequest("GET", url, nil)
