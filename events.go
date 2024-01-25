@@ -49,14 +49,15 @@ type MessageEvent struct {
 // callback.
 // https://developers.facebook.com/docs/messenger-platform/webhook-reference/message-echo
 type ReceivedMessage struct {
-	ID          string             `json:"mid"`
-	Text        string             `json:"text,omitempty"`
-	Attachments []*Attachment      `json:"attachments,omitempty"`
-	Seq         int                `json:"seq"`
-	QuickReply  *QuickReplyPayload `json:"quick_reply,omitempty"`
-	ReplyTo     *ReplyTo           `json:"reply_to,omitempty"`
-	IsEcho      bool               `json:"is_echo,omitempty"`
-	Metadata    *string            `json:"metadata,omitempty"`
+	ID            string             `json:"mid"`
+	Text          string             `json:"text,omitempty"`
+	Attachments   []*Attachment      `json:"attachments,omitempty"`
+	Seq           int                `json:"seq"`
+	QuickReply    *QuickReplyPayload `json:"quick_reply,omitempty"`
+	ReplyTo       *ReplyTo           `json:"reply_to,omitempty"`
+	IsEcho        bool               `json:"is_echo,omitempty"`
+	IsUnsupported bool               `json:"is_unsupported,omitempty"`
+	Metadata      *string            `json:"metadata,omitempty"`
 }
 
 // QuickReplyPayload contains content specific to a quick reply.
