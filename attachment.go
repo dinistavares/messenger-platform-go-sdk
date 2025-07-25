@@ -1,9 +1,5 @@
 package messenger
 
-import (
-	"encoding/json"
-)
-
 type AttachmentType string
 
 const (
@@ -17,39 +13,6 @@ const (
 type Attachment struct {
 	Type    AttachmentType `json:"type"`
 	Payload interface{}    `json:"payload,omitempty"`
-}
-
-type rawAttachment struct {
-	Type    AttachmentType  `json:"type"`
-	Payload json.RawMessage `json:"payload"`
-}
-
-func (a *Attachment) UnmarshalJSON(b []byte) error {
-	raw := &rawAttachment{}
-	err := json.Unmarshal(b, raw)
-	if err != nil {
-		return err
-	}
-	a.Type = raw.Type
-	var payload interface{}
-
-	switch a.Type {
-	case AttachmentTypeLocation:
-		payload = &Location{}
-	case AttachmentTypeTemplate:
-		//TODO: implement template unmarshalling
-		a.Payload = raw.Payload
-		return nil
-	default:
-		payload = &Resource{}
-	}
-
-	err = json.Unmarshal(raw.Payload, payload)
-	if err != nil {
-		return err
-	}
-	a.Payload = payload
-	return nil
 }
 
 type Resource struct {
