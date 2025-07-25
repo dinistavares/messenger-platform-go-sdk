@@ -32,17 +32,19 @@ type MessageOpts struct {
 // https://developers.facebook.com/docs/messenger-platform/webhook-reference#format
 type MessageEvent struct {
 	Event
-	Messaging []struct {
-		MessageOpts
-		Message           *MessageEcho       `json:"message,omitempty"`
-		Delivery          *Delivery          `json:"delivery,omitempty"`
-		Postback          *Postback          `json:"postback,omitempty"`
-		Optin             *Optin             `json:"optin,omitempty"`
-		Read              *Read              `json:"read,omitempty"`
-		Referral          *Referral          `json:"referral,omitempty"`
-		PassThreadControl *PassThreadControl `json:"pass_thread_control,omitempty"`
-		TakeThreadControl *TakeThreadControl `json:"take_thread_control,omitempty"`
-	} `json:"messaging"`
+	Messaging []MessageEventMessaging `json:"messaging"`
+}
+
+type MessageEventMessaging struct {
+	MessageOpts
+	Message           *MessageEcho       `json:"message,omitempty"`
+	Delivery          *Delivery          `json:"delivery,omitempty"`
+	Postback          *Postback          `json:"postback,omitempty"`
+	Optin             *Optin             `json:"optin,omitempty"`
+	Read              *Read              `json:"read,omitempty"`
+	Referral          *Referral          `json:"referral,omitempty"`
+	PassThreadControl *PassThreadControl `json:"pass_thread_control,omitempty"`
+	TakeThreadControl *TakeThreadControl `json:"take_thread_control,omitempty"`
 }
 
 // ReceivedMessage contains message specific information included with an echo
