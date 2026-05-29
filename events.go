@@ -94,9 +94,21 @@ type Postback struct {
 // Referral contains content specific to a referal.
 // https://developers.facebook.com/docs/messenger-platform/webhook-reference/referal
 type Referral struct {
-	Ref    string `json:"ref,omitempty"`
-	Source string `json:"source,omitempty"`
-	Type   string `json:"type,omitempty"`
+	Ref            string                  `json:"ref,omitempty"`
+	Source         string                  `json:"source,omitempty"`
+	Type           string                  `json:"type,omitempty"`
+	AdID           string                  `json:"ad_id,omitempty"`
+	RefererURI     string                  `json:"referer_uri,omitempty"`
+	AdsContextData *ReferralAdsContextData `json:"ads_context_data,omitempty"`
+}
+
+type ReferralAdsContextData struct {
+	AdTitle   string `json:"ad_title,omitempty"`
+	PhotoURL  string `json:"photo_url,omitempty"`
+	VideoURL  string `json:"video_url,omitempty"`
+	PostID    string `json:"post_id,omitempty"`
+	ProductID string `json:"product_id,omitempty"`
+	FlowID    string `json:"flow_id,omitempty"`
 }
 
 // The Pass Thread Control API of the handover protocol is used to pass control of a conversation from one app to another.
